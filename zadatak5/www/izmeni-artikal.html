@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izmeni Artikal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <a href="/svi-artikli">Svi Artikli</a>
+    </div>
+    <h3>Odaberi Artikal</h3>
+    <div id="select-artikli">
+    </div>
+    <form method="POST" action="/izmeni-artikal">
+        ID: <input type="number" name="id" id='id' readonly><br><br>
+        NAZIV: <input type="text" name="naziv" id="naziv"><br><br>
+        CENA: <input type="text" name="cena" name="cena"><br><br>
+        IME KOMPANIJE: <input type="text" name="imeKompanije" name="imeKompanije"><br><br>
+        <button type="submit">Izmeni Artikal</button>
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url:'/api/svi-artikli',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response){
+                    popuniPodatke(response);
+                }
+            });
+        });
+        function popuniPodatke(response){
+            let selectArtikli = document.querySelector('#select-artikli');
+            let html = `                
+                <select id="artikli" onchange="popuniFormu()">    
+                    <option value='null'>--Izaberite artikal--</option>
+            `;
+            for(let o of response){
+                html += `
+                    <option value='${o.id}:${o.naziv}:${o.cena}:${o.imeKompanije}'>${o.naziv} - ${o.cena} (${o.imeKompanije})</option>
+                `;
+            }
+            html += `
+                </select><br><br>
+            `;
+            selectArtikli.innerHTML = html;
+        }
+        //Popunjavanje forme na osnovu izabrane artikli
+        function popuniFormu(){
+            let selectArtikli = document.querySelector('#artikli');
+            document.querySelector('#id').value = selectArtikli.value.split(':')[0];
+            document.querySelector('#naziv').value = selectArtikli.value.split(':')[1];
+            document.querySelector('#cena').value = selectArtikli.value.split(':')[2];
+            document.querySelector('#imeKompanije').value = selectArtikli.value.split(':')[3];
+        }
+    </script>
+</body>
+</html>
