@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE Magacin SYSTEM "magacin.dtd">
+<Magacin xmlns="http://www.w3schools.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.w3schools.com magacin.xsd">
+    <Artikal>
+        <Naziv sifra="tst-001">Test artikal 1</Naziv>
+        <DatumIzrade>
+            <Dan>1</Dan>
+            <Mesec>3</Mesec>
+            <Godina>2019</Godina>
+        </DatumIzrade>
+        <Cena tip="rsd">2500</Cena>
+        <KompanijaProdavca>
+            <ImeKompanije>Test kompanija 1</ImeKompanije>
+            <Adresa>Test adresa 1</Adresa>
+        </KompanijaProdavca>
+        <EmailProdavca tip="privatni">test11@test.com</EmailProdavca>
+        <EmailProdavca tip="sluzbeni">test12@test.com</EmailProdavca>
+    </Artikal>
+    <Artikal>
+        <Naziv sifra="tst-002">Test artikal 2</Naziv>
+        <DatumIzrade>
+            <Dan>2</Dan>
+            <Mesec>4</Mesec>
+            <Godina>2020</Godina>
+        </DatumIzrade>
+        <Cena tip="eur">30</Cena>
+        <KompanijaProdavca>
+            <ImeKompanije>Test kompanija 2</ImeKompanije>
+            <Adresa>Test adresa 2 1</Adresa>
+            <Adresa>Test adresa 2 2</Adresa>
+        </KompanijaProdavca>
+        <EmailProdavca tip="sluzbeni">test2@test.com</EmailProdavca>
+    </Artikal>
+</Magacin>
